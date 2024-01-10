@@ -1,34 +1,28 @@
 // small .json files contains id, title, channel and image
-
 const express = require("express");
-
 const app = express();
+require("dotenv").config();
+const cors = require("cors");
+const SERVER_PORT = process.env.PORT || 8080;
+const apiUrl = process.env.API_URL;
+const videoRoutes = require("./routes/video");
 
-const videos = require("./data/videos.json");
+app.use(cors());
+app.use(express.json());
 
-const SERVER_PORT = 8080;
+app.use((request, response, next) => {
+  console.log("Logging request from middleware.");
+  next();
+});
+
+app.use("/images", express.static("./public/images"));
 
 app.get("/", (request, response) => {
   response.send("<h1>Brainflix API</h1>");
 });
 
-app.get("/videos", (request, response) => {
-  response.json(videos);
-});
-
-app.get("/videos/:id", (request, response) => {
-  const videoId = request.params.id;
-
-  const foundVideo = videos.find((video) => {
-    return video.id === videoId;
-  });
-
-  if (!foundVideo) {
-    response.status(404).json({ error: `id:${videoId} could not be found` });
-  }
-  response.status(200).json(foundVideo);
-});
+app.use("/videos", videoRoutes);
 
 app.listen(SERVER_PORT, () => {
-  console.log(`Server running on http://localhost:${SERVER_PORT}/`);
+  console.log(`Server running on ${apiUrl}${SERVER_PORT}/`);
 });
