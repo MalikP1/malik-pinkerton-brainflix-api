@@ -17,11 +17,6 @@ function updateVideos(data) {
   fs.writeFileSync("./data/videos.json", stringified);
 }
 
-// router.get("/", (request, response) => {
-//   const data = readVideos();
-//   response.json(data);
-// });
-
 router.get("/", (request, response) => {
   const data = readVideos();
   response.status(200).json(
