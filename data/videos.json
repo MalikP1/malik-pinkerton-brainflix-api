@@ -299,18 +299,5 @@
         "timestamp": 1632496261000
       }
     ]
-  },
-  {
-    "id": "c68fd285-8a03-4789-99f7-6d4249bd2956",
-    "title": "Test title",
-    "channel": "Logged in user",
-    "image": "/images/Upload-video-preview.jpg",
-    "description": "Test description",
-    "views": "1",
-    "likes": "0",
-    "duration": "0:00",
-    "video": "",
-    "timestamp": 1709578499210,
-    "comments": []
   }
 ]
