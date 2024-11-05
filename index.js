@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const cors = require("cors");
-// const SERVER_PORT = process.env.PORT || 8080;
+const SERVER_PORT = process.env.PORT || 8080;
 const apiUrl = process.env.API_URL;
 const videoRoutes = require("./routes/video");
 
@@ -23,6 +23,6 @@ app.get("/", (request, response) => {
 
 app.use("/videos", videoRoutes);
 
-app.listen(apiUrl, () => {
+app.listen(SERVER_PORT, () => {
   console.log(`Server running on ${apiUrl}/`);
 });
