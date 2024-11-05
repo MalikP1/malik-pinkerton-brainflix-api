@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const crypto = require("crypto");
 require("dotenv").config();
-const SERVER_PORT = process.env.PORT || 8080;
+// const SERVER_PORT = process.env.PORT || 8080;
 const apiUrl = process.env.API_URL;
 
 function readVideos() {
@@ -25,7 +25,7 @@ router.get("/", (request, response) => {
         id: videos.id,
         title: videos.title,
         channel: videos.channel,
-        image: apiUrl + SERVER_PORT + videos.image,
+        image: apiUrl + videos.image,
       };
     })
   );
